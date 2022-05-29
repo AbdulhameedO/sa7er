@@ -4,37 +4,45 @@
 using std::cout;
 using std::cin;
 using std::vector;
+using std::pair;
 
-struct edge
-{
-public:
-	city* startcity = nullptr;
-	city* endcity = nullptr;
-	int value = 0;
-};
+//struct edge
+//{
+//public:
+//	city* startcity = nullptr;
+//	city* endcity = nullptr;
+//	int value = 0;
+//};
 
 struct city
 {
 public:
-	int value = 0;
+	vector<pair<int,int>> children;
 	int min_dist = INT_MAX;
-	city* parent = nullptr;
 };
 
 int main()
 {
-	int cities, portals, start;
-	cin >> cities >> portals >> start;
+	int cities, portals, mycity;
+	cin >> cities >> portals >> mycity;
 
-	vector<edge> edges(portals);
-	city temp;
+	//vector<edge> edges(portals);
+	//city start,end;
+	pair<int, int> temp;
+	int start, end,value;
+	vector<city> madeena(cities);
+
 	for (int i = 0; i < portals; i++)
 	{
-		//stopped here;
-		cin >> edges[i].startcity;
-		cin >> edges[i].endcity;
-		cin >> edges[i].value;
+		cin >> start;
+		cin >> end;
+		cin >> value;
+
+		temp.first = end;
+		temp.second = value;
+		madeena[start].children.push_back(temp);
 	}
+
 
 	return 0;
 }
